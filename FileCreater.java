@@ -7,7 +7,7 @@ import java.io.OutputStreamWriter;
 import java.util.Formatter;
 
 public class FileCreater {
-	
+
 	private FileOutputStream output;
 	private OutputStreamWriter outputWriter;
 	private BufferedWriter bufferwriter;
@@ -23,7 +23,7 @@ public class FileCreater {
 		noSets = gui.getNoSets();
 		equipment = gui.getEquip();
 		try {
-			output = new FileOutputStream(date+room+teacher+".txt");
+			output = new FileOutputStream(date + room + teacher + ".txt");
 			outputWriter =  new OutputStreamWriter (output, "UTF-16");
 			bufferwriter = new BufferedWriter (outputWriter);
 
