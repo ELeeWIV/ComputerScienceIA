@@ -18,7 +18,7 @@ import java.awt.TextArea;
 public class GUI extends JFrame implements ActionListener, ItemListener{
 	private Label noStudents, noSets, addEquipList, equiplistLabel, teacher, room, date, period;
 	private TextField noStudentsField, noSetsField, addEquipListField, teacherField, roomField, dateField, periodField;
-	private Button addChem, submit;	
+	private Button addChem, submit;
 	private NewChem aNewChem;
 	private Choice equipList;
 	private String equipmentItem;
