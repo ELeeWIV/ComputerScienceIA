@@ -49,5 +49,29 @@ public class RetrieveEmail {
 			}
 		}
 	}
-//
+
+	public String getDate() {
+		return date;
+	}
+
+	public void getTeacher(){
+		return teahcer;
+	}
+
+	public void getRoom(){
+		return room;
+	}
+
+	public void getNoStudents(){
+		return noStudents;
+	}
+
+	public void getNoSets(){
+		return noSets;
+	}
+	
+	public void getEquipment(){
+		return equipment;
+	}
+
 }
