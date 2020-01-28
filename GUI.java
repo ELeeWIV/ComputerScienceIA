@@ -1,7 +1,7 @@
 package Main;
 
 import java.awt.*;
-import java.swing.*;
+import javax.swing.*;
 
 public class GUI extends JFrame implements ActionListener, ItemListener{
 
@@ -21,14 +21,14 @@ public class GUI extends JFrame implements ActionListener, ItemListener{
 				this.setSize(600, 500);
 				this.setVisible(true);
 			}
-		})
+		});
 
 	}
 
 	public static void main (String args[]) {
 		GUI gui = new GUI();
 	}
-
+/*
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == addChem) {
@@ -46,5 +46,5 @@ public class GUI extends JFrame implements ActionListener, ItemListener{
 
 		}
 
-	}
+	}*/
 }
