@@ -1,31 +1,44 @@
-Package GUI1;
+package GUI1;
+
 import java.awt.*;
-import java.swing.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 public class OtherGuiStuff extends JPanel implements ItemListener{
   private Choice equipList;
   private String equipmentItem;
-  private TextArea txtArea;
-  private Label chemName, dil, vol;
-  private TextField chemNameField, dilField, volField;
-  private Label noStudents, noSets, addEquipList, equiplistLabel, teacher, room, date, period;
-  private TextField noStudentsField, noSetsField, addEquipListField, teacherField, roomField, dateField, periodField;
-  private Button addChem, submit;
+  private JTextArea txtArea;
+  private JLabel noStudents, noSets, addEquipList, equiplistLabel, teacher, room, date, period;
+  private JTextField noStudentsField, noSetsField, addEquipListField, teacherField, roomField, dateField, periodField;
+  private JButton addChem, submit;
+  private GridBagConstraints gc;
 
 
   public OtherGuiStuff() {
-    noStudents = new Label("Number of Pupils:");
-    noStudentsField =  new TextField(15);
+	setLayout(new GridBagLayout());
+	gc = new GridBagConstraints();
+	setSize(600,350);
 
-    noSets = new Label("Number of Sets needed:");
-    noSetsField =  new TextField(15);
+    noStudents = new JLabel("Number of Pupils:");
+    noStudentsField =  new JTextField(10);
 
-    addEquipList = new Label("Additional Equipment needed");
-    addEquipListField =  new TextField(15);
+    noSets = new JLabel("Number of Sets needed:");
+    noSetsField =  new JTextField(10);
 
-    addChem = new Button("New Chemical");
-    addChem.addActionListener((ActionListener) this);
-    submit =  new Button("Submit");
+    addEquipList = new JLabel("Additional Equipment needed");
+    addEquipListField =  new JTextField(10);
+
+    //addChem = new JButton("New Chemical");
+    //addChem.addActionListener((ActionListener) this);
+    //submit =  new JButton("Submit");
 
     equipList = new Choice();
     equipList.addItemListener(this);
@@ -37,67 +50,127 @@ public class OtherGuiStuff extends JPanel implements ItemListener{
     equipList.add("Graduated Cylinder");
     equipList.add("blank");
 
-    equiplistLabel = new Label("Click an item the number of times you want that item");
-    txtArea = new TextArea(20, 30);
+    txtArea = new JTextArea(10, 11);
 
 
-    setSize(700, 1000);
-    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-    setResizable(false);
-    chemName = new Label ("Chemical:");
-    chemNameField = new TextField();
+    teacher = new JLabel ("Teacher:");
+    teacherField = new JTextField(10);
 
-    dil = new Label ("Dilution:");
-    dilField = new TextField();
+    room = new JLabel ("Room:");
+    roomField = new JTextField(10);
 
-    vol = new Label("Volume:");
-    volField = new TextField();
+    date = new JLabel ("Date:");
+    dateField  = new JTextField(10);
 
-    teacher = new Label ("Teacher:");
-    teacherField = new TextField(15);
-
-    room = new Label ("Room:");
-    roomField = new TextField(15);
-
-    date = new Label ("Date:");
-    dateField  = new TextField(15);
-
-    period = new Label("Period:");
-    periodField = new TextField(15);
+    period = new JLabel("Period:");
+    periodField = new JTextField(10);
 
     setup();
   }
   public void setup () {
-    this.setLayout(new FlowLayout());
 
-    add(date);
-    add(dateField);
+    gc.weightx = 1.0;
+    gc.weighty = 1.0;
+    gc.fill = GridBagConstraints.NONE;
 
-    add(teacher);
-    add(teacherField);
+////////////////////row 0/////////////////////////////
 
-    add(period);
-    add(periodField);
+    gc.gridx = 0;
+    gc.gridy = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(date, gc);
 
-    add(room);
-    add(roomField);
+    gc.gridy = 0;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(dateField, gc);
 
-    add(noStudents);
-    add(noStudentsField);
+////////////////////row 1/////////////////////////////
 
-    add(noSets);
-    add(noSetsField);
+    gc.gridy = 1;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(teacher, gc);
 
-    add(equipList);
-    add(equiplistLabel);
-    add(txtArea);
+    gc.gridy = 1;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(teacherField, gc);
 
-    add(addEquipList);
-    add(addEquipListField);
+////////////////////row 2/////////////////////////////
 
-    add(addChem);
+    gc.gridy = 2;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(period, gc);
 
-    setVisible(true);
+    gc.gridy = 2;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(periodField, gc);
+
+////////////////////row 3/////////////////////////////
+
+    gc.gridy = 3;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(room, gc);
+
+    gc.gridy = 3;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(roomField, gc);
+
+////////////////////row 4/////////////////////////////
+
+    gc.gridy = 4;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(noStudents, gc);
+
+    gc.gridy = 4;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(noStudentsField, gc);
+
+////////////////////row 5/////////////////////////////
+
+    gc.gridy = 5;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(noSets, gc);
+
+    gc.gridy = 5;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(noSetsField, gc);
+
+////////////////////row 6/////////////////////////////
+
+    gc.gridy = 6;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(equipList, gc);
+
+
+    gc.gridy = 6;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(new JScrollPane(txtArea), gc);
+
+    ////////////////////row 7/////////////////////////////
+
+    gc.gridy = 7;
+    gc.gridx = 0;
+    gc.anchor = GridBagConstraints.LINE_START;
+    add(addEquipList, gc);
+
+    gc.gridy = 7;
+    gc.gridx = 1;
+    gc.anchor = GridBagConstraints.LINE_END;
+    add(addEquipListField, gc);
+
+    //add(addChem);
   }
 
   public String getDate() {
@@ -129,4 +202,5 @@ public class OtherGuiStuff extends JPanel implements ItemListener{
     txtArea.append(equipmentItem + '\n');
 
   }
+
 }
