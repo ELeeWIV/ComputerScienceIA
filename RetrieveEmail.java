@@ -9,7 +9,7 @@ public class RetrieveEmail {
 //
 	private BufferReader bufferreader;
 	private FileReader filereader;
-	private String filename, line, date, teacher, room, noStudents, noSets, equipment;
+	private String filename, line, date, period, teacher, room, noStudents, noSets, equipment;
 	private int lineCounter;
 //
 	public RetrieveEmail() {
@@ -30,21 +30,24 @@ public class RetrieveEmail {
 				date = line;
 			}
 			else if (lineCounter == 1){
-				teahcer = line;
+				period = line;
 			}
 			else if (lineCounter == 2){
-				room = line;
+				teahcer = line;
 			}
 			else if (lineCounter == 3){
-				noStudents = line;
+				room = line;
 			}
 			else if (lineCounter == 4){
-				noSets = line;
+				noStudents = line;
 			}
 			else if (lineCounter == 5){
 				noSets = line;
 			}
 			else if (lineCounter == 6){
+				noSets = line;
+			}
+			else if (lineCounter == 7){
 				equipment = line;
 			}
 		}
@@ -52,6 +55,10 @@ public class RetrieveEmail {
 
 	public String getDate() {
 		return date;
+	}
+
+	public String getPeriod() {
+		return period;
 	}
 
 	public void getTeacher(){
@@ -69,7 +76,7 @@ public class RetrieveEmail {
 	public void getNoSets(){
 		return noSets;
 	}
-	
+
 	public void getEquipment(){
 		return equipment;
 	}

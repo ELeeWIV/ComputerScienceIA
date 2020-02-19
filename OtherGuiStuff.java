@@ -177,6 +177,10 @@ public class OtherGuiStuff extends JPanel implements ItemListener{
     return dateField.getText();
   }
 
+  public String getPeriod () {
+    return periodField.getText();
+  }
+
   public String getTeacher() {
     return teacherField.getText();
   }
