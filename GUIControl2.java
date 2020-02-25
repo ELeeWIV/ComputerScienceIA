@@ -14,13 +14,65 @@ public class GUIControl2 extends JFrame implements ItemListener {
   private JButton next, previous;
   private Date[] datelist;
   private DateSorter ds;
+  private ClassEvent ce;
+  private int i;
 
   public GUIControl2() {
+    i = 0;
     ds = new DateSorter();
     datelist = new Date[ds.returnLength()];
     datelist = ds.sort();
     next = new JButton("Next Needed Class");
+    ce = new ClassEvent(dateList[i]);
+    next.addActionListener (new ActionListener () {
+      @Override
+      public void actionPerformed ( ActionEvent e) {
+        i++;
+        remove(ce);
+        ce = new ClassEvent[i];
+        add(ce);
+      }
+    });
     previous = new JButton("Previous Needed Class");
+    previous.addActionListener (new ActionListener () {
+      @Override
+      public void actionPreformed (ActionEvent e) {
+        if (i == 0) {
+          JOptionPane.showMessageDialog(frame,"This is the most recent event", "", JOptionPane.PLAIN_MESSAGE);
+        }
+        else {
+          i--;
+        }
+        remove(ce);
+        ce = new ClassEvent[i];
+        add(ce);
+      }
+    });
+    super("Date Organizer");
+    SwingUtilities.invokeLater(new Runnable() {
+      public void run (){
+        setLayout (new GridBagLayout());
+        setResizable(true);
+        GridBagConstraints gc = new GridBagConstraints();
+				gc.weightx = 0;
+				gc.weighty = 0;
+				gc.insets = new Insets(6, 6, 6, 6);
+
+        gc.gridwidth(2);
+        gc.gridx = 0;
+        gc.gridy = 0;
+        ce.setBorder(new EtchedBorder(EtchedBorder.LOWERED));
+        add(ce, gc);
+
+        gc.gridwidth(1);
+        gc.gridx = 0;
+        gc.gridy = 1;
+        add(previous, gc);
+
+        gc.gridx = 1;
+        add(next, gc);
+      }
+    })
 
   }
   private class DatesSorter {
