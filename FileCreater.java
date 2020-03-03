@@ -6,31 +6,27 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.Formatter;
 
+import GUI1.GUI;
+import GUI1.NewChem;
+import GUI1.OtherGuiStuff;
+
 public class FileCreater {
 
 	private FileOutputStream output;
 	private OutputStreamWriter outputWriter;
-	private BufferedWriter bufferwriter;
-	private String teacher, room, noStudents, noSets, equipment, date;
-	private GUI gui;
-	private ArrayList<Chemcial> arr2;
-	private NewChem nc;
+	private BufferedWriter bw;
+	private String teacher, room, noStudents, noSets, equipment, date, chem, dil, vol;
+	private OtherGuiStuff gui;
+	private NewChem gui2;
 
 
 	public FileCreater() {
-		date = gui.getDate();
-		period = gui.getPeriod();
-		teacher = gui.getTeacher();
-		room = gui.getroom();
-		noStudents = gui.getNoStudents();
-		noSets = gui.getNoSets();
-		equipment = gui.getEquip();
-		arr2 = nc.returnArr();
+		gui = new OtherGuiStuff();
+		gui2 = new NewChem();
 		try {
-			output = new FileOutputStream(date + period + room + ".txt");
+			output = new FileOutputStream(/*date + room + teacher + */"thisFile.txt");
 			outputWriter =  new OutputStreamWriter (output, "UTF-16");
-			bufferwriter = new BufferedWriter (outputWriter);
-
+			bw = new BufferedWriter (outputWriter);
 		}
 		catch (IOException e) {
 			e.printStackTrace();
@@ -38,49 +34,47 @@ public class FileCreater {
 	}
 
 	public void addItems() {
+		date = gui.getDate();
+		teacher = gui.getTeacher();
+		room = gui.getroom();
+		noStudents = gui.getNoStudents();
+		noSets = gui.getNoSets();
+		equipment = gui.getEquip();
+		chem = gui2.getChem();
+		dil = gui2.getDil();
+		vol = gui2.getVol();
+		/*date = "a";
+		teacher = "b";
+		room = "c";
+		noStudents = "d";
+		noSets = "e";
+		equipment = "f";
+		chem = "g";
+		dil = "h";
+		vol = "i";*/
 		try {
-			bufferwriter.write(date);
-			bufferwriter.newLine();
-			bufferwriter.write(period);
-			bufferwriter.newLine();
-			bufferwriter.write(teacher);
-			bufferwriter.newLine();
-			bufferwriter.write(room);
-			bufferwriter.newLine();
-			bufferwriter.write(noStudents);
-			bufferwriter.newLine();
-			bufferwriter.write(noSets);
-			bufferwriter.newLine();
-			bufferwriter.write(equipment);
-			for (int i : arr2) {
-				bufferwriter.write(arr2.get(i));
-				bufferwriter.newLine();
-			}
+			bw.write(date);
+			bw.write("\n");
+			bw.write(teacher);
+			bw.write("\n");
+			bw.write(room);
+			bw.write("\n");
+			bw.write(noStudents);
+			bw.write("\n");
+			bw.write(noSets);
+			bw.write("\n");
+			bw.write(equipment);
+			bw.write("\n");
+			bw.write(chem);
+			bw.write("\n");
+			bw.write(dil);
+			bw.write("\n");
+			bw.write(vol);
+			bw.close();
 		}
 		catch (IOException e) {e.printStackTrace();}
 	}
-	public String getDate() {
-		return date;
-	}
-
-	public void getTeacher(){
-		return teahcer;
-	}
-
-	public void getRoom(){
-		return room;
-	}
-
-	public void getNoStudents(){
-		return noStudents;
-	}
-
-	public void getNoSets(){
-		return noSets;
-	}
-
-	public void getEquipment(){
-		return equipment;
-	}
-
+	/*public static void main (String args[]) {
+		FileCreater fc = new FileCreater();
+	}*/
 }

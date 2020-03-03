@@ -28,6 +28,7 @@ public class GUI extends JFrame {
 
 				setLayout(new GridBagLayout());
 				setResizable(true);
+				fc = new FileCreater();
 
 
 				GridBagConstraints gc = new GridBagConstraints();
@@ -58,6 +59,7 @@ public class GUI extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						fc.addItems();
+						dispose();
 
 					}
 

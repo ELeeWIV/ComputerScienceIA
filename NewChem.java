@@ -4,19 +4,15 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Label;
 import java.awt.TextField;
-import java.awt.Button;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-public class NewChem extends JPanel implements {
+public class NewChem extends JPanel {
 	private Label chemName, dil, vol;
 	private TextField chemNameField, dilField, volField;
-	private Button anth;
 	private GridBagConstraints gc;
-	private ArrayList<Chemical> arr1;
-	private Chemcial ch;
 
 	public NewChem() {
 		Border chemborder = BorderFactory.createTitledBorder("Chemical");
@@ -31,23 +27,12 @@ public class NewChem extends JPanel implements {
 		volField = new TextField(10);
 		gc = new GridBagConstraints();
 
-		arr1 = new ArrayList<Chemical>;
-
-		anth = new Button("Another Chemical");
-		anth.addActionListener(new ActionListener () {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				ch = new Chemical(getChem(), getDil(), getVol());
-				arr1.add(ch);
-			}
-		})
-
-
 		addChemical();
 	}
+
 	public void addChemical() {
 		gc.weightx = 1;
-		gc.weighty = 1.5;
+		gc.weighty = 1;
 		gc.fill = GridBagConstraints.NONE;
 
 		///////////////////////////// row 1 /////////////////////////////////////
@@ -85,16 +70,18 @@ public class NewChem extends JPanel implements {
 		gc.anchor = GridBagConstraints.LINE_END;
 		add(volField, gc);
 	}
-	public String getVol(){
-		return volField.getText();
+
+	public String getChem() {
+		System.out.println(chemNameField.getText());
+		return chemNameField.getText();
 	}
-	public String getDil(){
+	public String getDil() {
+		System.out.println(dilField.getText());
 		return dilField.getText();
 	}
-	public String getChem(){
-		return chemFiled.getText();
+	public String getVol() {
+		System.out.println(volField.getText());
+		return volField.getText();
 	}
-	public ArrayList returnArr(){
-		return arr1;
-	}
+
 }

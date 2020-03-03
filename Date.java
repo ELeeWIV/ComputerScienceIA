@@ -1,6 +1,6 @@
 public class Date {
   private int day, month, year, period, room;
-  public Date (String day, String month, String year, String period, String room) {
+  public Date (String day, String month, String year, String period, String room, ) {
     this.day = day;
     this.month = month;
     this.year = year;
